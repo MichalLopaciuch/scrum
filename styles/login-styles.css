@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: url('../assets/img/catwp3.jpg');
+    background-size: cover;
+    color: white;
+}
+
+main {
+    flex: 1 0 auto;
+}
+.form-panel{
+    background-color: rgba(78, 78, 78, 0.5);
+    padding: 20px;
+}
+.auth-main {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* label color */
+.input-field label {
+color: white;
+}
+/* label focus color */
+.input-field input[type=email]:focus + label {
+color: rgb(243, 183, 183) !important
+}
+/* label underline focus color */
+.input-field input[type=email]:focus {
+border-bottom: 1px solid rgb(243, 183, 183) !important; 
+box-shadow: 0 1px 0 0 rgb(243, 183, 183) !important;
+}
+/* valid color */
+.input-field input[type=email].valid {
+border-bottom: 1px solid rgb(243, 183, 183)  !important;
+box-shadow: 0 1px 0 0 rgb(243, 183, 183)  !important;
+}
+/* invalid color */
+.input-field input[type=email].invalid {
+border-bottom: 1px solid rgb(243, 183, 183)  !important;
+box-shadow: 0 1px 0 0 rgb(243, 183, 183)  !important;
+}
+
+/* label focus color */
+.input-field input[type=password]:focus + label {
+color: rgb(243, 183, 183) !important
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+border-bottom: 1px solid rgb(243, 183, 183) !important; 
+box-shadow: 0 1px 0 0 rgb(243, 183, 183) !important;
+}
+/* valid color */
+.input-field input[type=password].valid {
+border-bottom: 1px solid rgb(243, 183, 183)  !important;
+box-shadow: 0 1px 0 0 rgb(243, 183, 183)  !important;
+}
+/* invalid color */
+.input-field input[type=password].invalid {
+border-bottom: 1px solid rgb(243, 183, 183)  !important;
+box-shadow: 0 1px 0 0 rgb(243, 183, 183)  !important;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+color: rgb(243, 183, 183) !important;    
+}
+h5{
+text-align: center;
+color: white;
+}
+.btn-large{
+width: 60%;
+}

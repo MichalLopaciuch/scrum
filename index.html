@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="SCRUM">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kitki</title>
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <!---->
+    <link rel="stylesheet" href="styles/custom-styles.css">
+</head>
+<body ng-controller="indexCtrl as indexCtrl">
+    <header> 
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a >Profile</a></li>
+            <li class="divider"></li>
+            <li><a ng-click="indexCtrl.logout()">Log out</a></li>
+        </ul>
+        <div class="navbar-fixed" style="z-index: 998">
+            <nav>
+                <div class="nav-wrapper">
+                    <a ui-sref="wall" class="brand-logo"><img src="assets/img/logon.png" width="25" height="25" alt="logo" style="margin-left: 10px;"> Kitki Bitki</a>
+                    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                    <ul class="right hide-on-med-and-down">
+                        <li><a class="disabled"><img class="av" src=' {{ indexCtrl.photo_url }} ' alt="av">{{ indexCtrl.name }}</a></li>
+                        <li><a ui-sref="wall">Wall</a></li>
+                        <li><a class="disabled">Messages</a></li>
+                        <li><a class="disabled">{{0}} Groups</a></li>
+                        <li><a class="disabled">Litter Box</a></li>
+                        <li><a class="disabled">Pages</a></li>
+                        <li><a class="disabled">Games</a></li>
+                        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Profile<i class="material-icons right">arrow_drop_down</i></a></li>
+                    </ul>
+                    <ul class="side-nav" id="mobile-demo">
+                        <li><a class="disabled"><img class="av" src=' {{ indexCtrl.photo_url }} ' alt="av">{{ indexCtrl.name }}</a></li>
+                        <li> <a ui-sref="wall">Wall</a></li>
+                        <li><a class="disabled">Messages</a></li>
+                        <li><a class="disabled">{{0}} Groups</a></li>
+                        <li><a class="disabled">Litter Box</a></li>
+                        <li><a class="disabled">Pages</a></li>
+                        <li><a class="disabled">Games</a></li>
+                        <li><a >Profile</a></li>
+                        <li class="divider"></li>
+                        <li><a ng-click="indexCtrl.logout()">Log out</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>   
+
+    <main><div ui-view autoscroll="true" autoscroll-body-top></div></main>
+
+    <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Meow</h5>
+                        <p class="grey-text text-lighten-4">KitkiBitki ltd. Created by Paweł Sliski &amp; Zuzanna Olszowa &amp; Oliwia Trendowska &amp; Michał Łopaciuch.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 KitkiBitki
+                    <a class="grey-text text-lighten-4 right" href="#!">If you want to know more...</a>
+                </div>
+            </div>
+    </footer>
+
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-animate.min.js"></script>
+    <script src="scripts/angular-ui-router.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/pages/pages.module.js"></script>
+    <script src="app/pages/wall/wall.module.js"></script>
+    <script src="app/pages/wall/wallCtrl.js"></script>
+    <script src="app/pages/addPost/addPost.module.js"></script>
+    <script src="app/pages/addPost/addPostCtrl.js"></script>
+    <!---->
+    <script src="scripts/customInit.js"></script>
+</body>
+</html>

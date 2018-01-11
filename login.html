@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kitki | Log In</title>
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <link rel="stylesheet" href="styles/custom-styles.css">
+    <link rel="stylesheet" href="styles/login-styles.css">
+</head>
+<body>
+    <main class="auth-main">
+        <div class="container form-panel">
+                <h5>Log In</h5>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" name="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <a id="btn-login" class="waves-effect waves-light btn-large">Log In</a> <br>
+            <div style="color: white;">Don't have an account? <a href="register.html" style="text-decoration: underline; color: cyan">Create the new one now!</a></div> 
+        </div>
+    </main>
+    <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Meow</h5>
+                        <p class="grey-text text-lighten-4">KitkiBitki ltd. Created by Michał Łopaciuch &amp; Zuzanna Olszowa &amp; Oliwia Trendowska &amp; Paweł Sliski.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    © 2018 KitkiBitki
+                    <a class="grey-text text-lighten-4 right" href="#!">If you want to know more...</a>
+                </div>
+            </div>
+    </footer>
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script>
+        $('#btn-login').on('click', function(e){
+            e.preventDefault();
+
+            String.prototype.hashCode = function() {
+            var hash = 0, i, chr;
+                if (this.length === 0) return hash;
+                for (i = 0; i < this.length; i++) {
+                    chr   = this.charCodeAt(i);
+                    hash  = ((hash << 5) - hash) + chr;
+                    hash |= 0; // Convert to 32bit integer
+                }
+                return hash;
+            };
+            
+            var email = $('#email').val();
+            var password = $('#password').val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/scrum/php/login.php',
+                data: {
+                    'email': email,
+                    'password': password
+                },
+                dataType: 'json',
+                success: function(response){
+                    if(response == 'ERROR')
+                        alert('Nieprawdiłowy login lub hasło');
+                    else if(response == 'ERROR2')
+                        alert('Mega błąd xd');
+                    else {
+                        sessionStorage.setItem('id', response.id);
+                        sessionStorage.setItem('email', response.email);
+                        sessionStorage.setItem('password', response.password);
+                        sessionStorage.setItem('name', response.name);
+                        sessionStorage.setItem('surname', response.surname);
+                        sessionStorage.setItem('photo_url', response.photo_url);
+                        sessionStorage.setItem('auth', response.id);
+                        window.location.href = 'index.html';
+                    }
+                },
+                error: function(status){
+                   alert('Błąd przy łączeniu z serwerem'); 
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>

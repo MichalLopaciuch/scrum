@@ -1,0 +1,27 @@
+
+.post{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    background-color: rgb(248, 110, 110);
+    border: 1px black dotted;
+    border-radius: 20px;;
+    box-shadow: 10px 10px 5px grey;
+}
+.post h2{
+    padding: 10px;
+    border-bottom: 1px solid rgb(163, 72, 72);
+}
+.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: rgb(201, 201, 201);
+  }
+.av{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
