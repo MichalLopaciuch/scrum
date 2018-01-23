@@ -1,1 +1,125 @@
-<h1>register</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kitki | Register</title>
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/materialize.min.css">
+    <link rel="stylesheet" href="styles/custom-styles.css">
+    <link rel="stylesheet" href="styles/register-styles.css">
+    <link rel="shortcut icon" type="image/png" href />
+    <link rel="shortcut icon" type="image/png" href/>
+</head>
+
+<body>
+    <main class="auth-main">
+        <div class="container form-panel">
+            <h5>Register</h5>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="email" name="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="password" name="password" type="password" class="validate">
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="name" name="name" type="text" class="validate">
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="surname" name="surname" type="text" class="validate">
+                    <label for="surname">Surname</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="photoUrl" name="photoUrl" type="text" class="validate">
+                    <label for="photoUrl">Photo URL (bo nie stać nas na nasz hosting, a duzo jest zdjęć kotów w internecie)</label>
+                </div>
+            </div>
+            <a id="btn-register" class="waves-effect waves-light btn-large">Create an account</a>
+            <br>
+            <div style="color: white;">
+                <a href="index.html" style="text-decoration: underline; color: cyan">I already have an account! </a>
+            </div>
+        </div>
+    </main>
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Meow</h5>
+                    <p class="grey-text text-lighten-4">KitkiBitki ltd. Created by Michał Łopaciuch &amp; Zuzanna Olszowa &amp; Oliwia Trendowska &amp; Paweł
+                        Sliski.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 KitkiBitki
+                <a class="grey-text text-lighten-4 right" href="#!">If you want to know more...</a>
+            </div>
+        </div>
+    </footer>
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/materialize.min.js"></script>
+    <script>
+        $('#btn-register').on('click', function (e) {
+            e.preventDefault();
+
+            var email = $('#email').val();
+            var password = $('#password').val();
+            var name = $('#name').val();
+            var surname = $('#surname').val();
+            var photoURL = $('#photoUrl').val();
+
+            if (   email != ''
+                && password != ''
+                && name != ''
+                && surname != ''
+                && photoURL != '') {
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/register.php',
+                    data: {
+                        'email': email,
+                        'password': password,
+                        'name': name,
+                        'surname': surname,
+                        'photoURL': photoURL
+                    },
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response == 'ERROR')
+                            alert(response);
+                        else {
+                            alert('Account created!');
+                            window.location.href = 'login.html'
+                        }
+                    },
+                    error: function (status) {
+                        alert('Cannot connect to the server, call the KitkiBitki team');
+                    }
+                });
+            }
+            else {
+                alert('Fill in all the blanks!')
+            }
+        });
+    </script>
+
+</body>
+
+</html>

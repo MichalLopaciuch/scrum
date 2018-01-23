@@ -74,4 +74,9 @@ color: white;
 }
 .btn-large{
 width: 60%;
+background-color: #eb5d5d;
+}
+
+.btn-large:hover{
+    background-color: #b43d3d;
 }

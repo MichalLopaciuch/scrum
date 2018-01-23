@@ -36,7 +36,7 @@ if($num_rows == 1){
   echo json_encode($ret, JSON_PRETTY_PRINT);
 }
 elseif ($num_rows > 1){
-  echo $ERROR2;
+  echo json_encode($ERROR2);
 }
-else echo $ERROR;
+else echo json_encode($ERROR);
 ?>
